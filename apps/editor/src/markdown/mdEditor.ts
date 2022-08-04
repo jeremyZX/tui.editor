@@ -189,6 +189,10 @@ export default class MdEditor extends EditorBase {
         if ((ev.metaKey || ev.ctrlKey) && ev.key.toUpperCase() === 'V') {
           this.clipboard.focus();
         }
+        if (ev.key === 'Escape') {
+          this.blur();
+        }
+
         this.eventEmitter.emit('keydown', this.editorType, ev);
         return false;
       },
