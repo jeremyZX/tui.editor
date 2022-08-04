@@ -34,6 +34,9 @@ function createScrollSyncToolbarItem(): ToolbarItemInfo {
   const toggleSwitch = document.createElement('span');
 
   label.className = 'scroll-sync active';
+  label.setAttribute('role', 'presentation');
+
+  checkbox.setAttribute('aria-label', i18n.get('Auto scroll enabled'));
   checkbox.type = 'checkbox';
   checkbox.checked = true;
   toggleSwitch.className = 'switch';
@@ -44,8 +47,10 @@ function createScrollSyncToolbarItem(): ToolbarItemInfo {
 
       if (checked) {
         addClass(label, 'active');
+        checkbox.setAttribute('aria-label', i18n.get('Auto scroll enabled'));
       } else {
         removeClass(label, 'active');
+        checkbox.setAttribute('aria-label', i18n.get('Auto scroll disabled'));
       }
       execCommand('toggleScrollSync', { active: checked });
     });
