@@ -74,7 +74,7 @@ describe('Default toolbar', () => {
       'Inline code',
       'Insert codeBlock',
     ].forEach((label) => {
-      expect(screen.queryByLabelText(label)).not.toBeNull();
+      expect(screen.queryByLabelText((content) => content.startsWith(label))).not.toBeNull();
     });
 
     expect(document.body).toContainElement(getElement('.scroll-sync'));
@@ -84,7 +84,7 @@ describe('Default toolbar', () => {
     const spy = jest.fn();
 
     editor.eventEmitter.listen('command', spy);
-    screen.getByLabelText('Bold').click();
+    screen.getByLabelText('Bold', { exact: false }).click();
 
     // eslint-disable-next-line no-undefined
     expect(spy).toHaveBeenCalledWith('bold', undefined);
@@ -313,10 +313,10 @@ describe('Default toolbar', () => {
   });
 
   it('should active indent/outdent button when only ordered or bullet list actived', () => {
-    const bulletListBtn = screen.getByLabelText('Unordered list');
-    const orderedListBtn = screen.getByLabelText('Ordered list');
-    const indentBtn = screen.getByLabelText('Indent');
-    const outdentBtn = screen.getByLabelText('Outdent');
+    const bulletListBtn = screen.getByLabelText('Unordered list', { exact: false });
+    const orderedListBtn = screen.getByLabelText((content) => content.startsWith('Ordered list'));
+    const indentBtn = screen.getByLabelText('Indent', { exact: false });
+    const outdentBtn = screen.getByLabelText('Outdent', { exact: false });
 
     bulletListBtn.click();
 

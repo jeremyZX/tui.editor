@@ -22,6 +22,7 @@ import { ImagePopupBody } from './components/toolbar/imagePopupBody';
 import { LinkPopupBody } from './components/toolbar/linkPopupBody';
 import { TablePopupBody } from './components/toolbar/tablePopupBody';
 import { CustomPopupBody } from './components/toolbar/customPopupBody';
+import { isMac } from '@/utils/common';
 
 export function createToolbarItemInfo(type: string | ToolbarItemOptions): ToolbarItemInfo {
   return isString(type) ? createDefaultToolbarItemInfo(type) : type;
@@ -76,7 +77,7 @@ function createDefaultToolbarItemInfo(type: string) {
         name: 'bold',
         className: 'bold',
         command: 'bold',
-        tooltip: i18n.get('Bold'),
+        tooltip: `${i18n.get('Bold')} (${formatShortcut('Mod-B')})`,
         state: 'strong',
       };
       break;
@@ -85,7 +86,7 @@ function createDefaultToolbarItemInfo(type: string) {
         name: 'italic',
         className: 'italic',
         command: 'italic',
-        tooltip: i18n.get('Italic'),
+        tooltip: `${i18n.get('Italic')} (${formatShortcut('Mod-I')})`,
         state: 'emph',
       };
       break;
@@ -94,7 +95,7 @@ function createDefaultToolbarItemInfo(type: string) {
         name: 'strike',
         className: 'strike',
         command: 'strike',
-        tooltip: i18n.get('Strike'),
+        tooltip: `${i18n.get('Strike')} (${formatShortcut('Mod-S')})`,
         state: 'strike',
       };
       break;
@@ -103,7 +104,7 @@ function createDefaultToolbarItemInfo(type: string) {
         name: 'hr',
         className: 'hrline',
         command: 'hr',
-        tooltip: i18n.get('Line'),
+        tooltip: `${i18n.get('Line')} (${formatShortcut('Mod-L')})`,
         state: 'thematicBreak',
       };
       break;
@@ -112,7 +113,7 @@ function createDefaultToolbarItemInfo(type: string) {
         name: 'quote',
         className: 'quote',
         command: 'blockQuote',
-        tooltip: i18n.get('Blockquote'),
+        tooltip: `${i18n.get('Blockquote')} (${formatShortcut('Alt-Q')})`,
         state: 'blockQuote',
       };
       break;
@@ -121,7 +122,7 @@ function createDefaultToolbarItemInfo(type: string) {
         name: 'ul',
         className: 'bullet-list',
         command: 'bulletList',
-        tooltip: i18n.get('Unordered list'),
+        tooltip: `${i18n.get('Unordered list')} (${formatShortcut('Mod-U')})`,
         state: 'bulletList',
       };
       break;
@@ -130,7 +131,7 @@ function createDefaultToolbarItemInfo(type: string) {
         name: 'ol',
         className: 'ordered-list',
         command: 'orderedList',
-        tooltip: i18n.get('Ordered list'),
+        tooltip: `${i18n.get('Ordered list')} (${formatShortcut('Mod-O')})`,
         state: 'orderedList',
       };
       break;
@@ -171,7 +172,7 @@ function createDefaultToolbarItemInfo(type: string) {
         name: 'code',
         className: 'code',
         command: 'code',
-        tooltip: i18n.get('Code'),
+        tooltip: `${i18n.get('Code')} (${formatShortcut('Shift-Mod-C')})`,
         state: 'code',
       };
       break;
@@ -180,7 +181,7 @@ function createDefaultToolbarItemInfo(type: string) {
         name: 'codeblock',
         className: 'codeblock',
         command: 'codeBlock',
-        tooltip: i18n.get('Insert CodeBlock'),
+        tooltip: `${i18n.get('Insert CodeBlock')} (${formatShortcut('Shift-Mod-P')})`,
         state: 'codeBlock',
       };
       break;
@@ -189,7 +190,7 @@ function createDefaultToolbarItemInfo(type: string) {
         name: 'indent',
         className: 'indent',
         command: 'indent',
-        tooltip: i18n.get('Indent'),
+        tooltip: `${i18n.get('Indent')} (${formatShortcut('Mod-]')})`,
         state: 'indent',
       };
       break;
@@ -198,7 +199,7 @@ function createDefaultToolbarItemInfo(type: string) {
         name: 'outdent',
         className: 'outdent',
         command: 'outdent',
-        tooltip: i18n.get('Outdent'),
+        tooltip: `${i18n.get('Outdent')} (${formatShortcut('Mod-[')})`,
         state: 'outdent',
       };
       break;
@@ -229,6 +230,10 @@ interface Payload {
   pos: Pos;
   popup?: PopupOptions;
   initialValues?: PopupInitialValues;
+}
+
+function formatShortcut(shortcut: string): string {
+  return shortcut.replace('Mod', isMac ? '⌘' : 'Ctrl');
 }
 
 export function createPopupInfo(type: string, payload: Payload): PopupInfo | null {
