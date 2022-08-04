@@ -487,6 +487,15 @@
   padding: 0 20px 20px;
 }
 
+.toastui-editor-popup-body .toastui-editor-menu-headings button {
+  all: unset;
+  cursor: pointer;
+}
+
+.toastui-editor-popup-body .toastui-editor-menu-headings button:focus {
+  outline: 1px solid #00a9ff;
+}
+
 .toastui-editor-popup-add-image .toastui-editor-tabs {
   margin: 5px 0 10px;
 }
