@@ -175,7 +175,7 @@ export default class MdEditor extends EditorBase {
   }
 
   createView() {
-    return new EditorView(this.el, {
+    const view = new EditorView(this.el, {
       state: this.createState(),
       dispatchTransaction: (tr) => {
         this.updateMarkdown(tr);
@@ -212,6 +212,11 @@ export default class MdEditor extends EditorBase {
         widget: widgetNodeView,
       },
     });
+
+    view.dom.setAttribute('role', 'textbox');
+    view.dom.ariaMultiLine = 'true';
+
+    return view;
   }
 
   createCommands() {
