@@ -127,6 +127,11 @@ export default class MdEditor extends EditorBase {
       ev.preventDefault();
       (ev.target as HTMLTextAreaElement).value = '';
     });
+
+    // prevent focus and accessibility exposure of clipboard
+    this.clipboard.tabIndex = -1;
+    this.clipboard.setAttribute('aria-hidden', 'true');
+
     this.el.insertBefore(this.clipboard, this.view.dom);
   }
 
@@ -214,7 +219,7 @@ export default class MdEditor extends EditorBase {
     });
 
     view.dom.setAttribute('role', 'textbox');
-    view.dom.ariaMultiLine = 'true';
+    view.dom.setAttribute('aria-multiline', 'true');
 
     return view;
   }
