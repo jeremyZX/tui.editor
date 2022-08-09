@@ -180,7 +180,7 @@ export default class MdEditor extends EditorBase {
   }
 
   createView() {
-    const view = new EditorView(this.el, {
+    const editorView = new EditorView(this.el, {
       state: this.createState(),
       dispatchTransaction: (tr) => {
         this.updateMarkdown(tr);
@@ -218,10 +218,10 @@ export default class MdEditor extends EditorBase {
       },
     });
 
-    view.dom.setAttribute('role', 'textbox');
-    view.dom.setAttribute('aria-multiline', 'true');
+    editorView.dom.setAttribute('role', 'textbox');
+    editorView.dom.setAttribute('aria-multiline', 'true');
 
-    return view;
+    return editorView;
   }
 
   createCommands() {

@@ -133,7 +133,7 @@ export default class WysiwygEditor extends EditorBase {
   createView() {
     const { toDOMAdaptor, eventEmitter } = this;
 
-    return new EditorView(this.el, {
+    const editorView = new EditorView(this.el, {
       state: this.createState(),
       attributes: {
         class: CONTENTS_CLASS_NAME,
@@ -200,6 +200,11 @@ export default class WysiwygEditor extends EditorBase {
         },
       },
     });
+
+    editorView.dom.setAttribute('role', 'textbox');
+    editorView.dom.setAttribute('aria-multiline', 'true');
+
+    return editorView;
   }
 
   createCommands() {
