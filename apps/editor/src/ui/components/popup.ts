@@ -33,13 +33,53 @@ export class Popup extends Component<Props, State> {
     }
   };
 
+  private handleKeyDown = (ev: KeyboardEvent) => {
+    const { show } = this.props;
+
+    if (!show) {
+      return;
+    }
+
+    // Close popup on Escape keypress
+    if (ev.key === 'Escape') {
+      this.props.hidePopup();
+    }
+
+    // Trap focus within popup
+    if (ev.key !== 'Tab') {
+      return;
+    }
+
+    const focusableElements =
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+    const popup = this.refs.el;
+
+    const firstFocusableElement = popup.querySelectorAll(focusableElements)[0] as HTMLElement;
+    const focusableContent = popup.querySelectorAll(focusableElements) as NodeListOf<HTMLElement>;
+    const lastFocusableElement = focusableContent[focusableContent.length - 1];
+
+    if (!firstFocusableElement) {
+      return;
+    }
+
+    if (ev.shiftKey && document.activeElement === firstFocusableElement) {
+      lastFocusableElement.focus();
+      ev.preventDefault();
+    } else if (!ev.shiftKey && document.activeElement === lastFocusableElement) {
+      firstFocusableElement.focus();
+      ev.preventDefault();
+    }
+  };
+
   mounted() {
     document.addEventListener('mousedown', this.handleMousedown);
+    document.addEventListener('keydown', this.handleKeyDown);
     this.props.eventEmitter.listen('closePopup', this.props.hidePopup);
   }
 
   beforeDestroy() {
     document.removeEventListener('mousedown', this.handleMousedown);
+    document.removeEventListener('keydown', this.handleKeyDown);
   }
 
   updated(prevProps: Props) {
@@ -57,6 +97,22 @@ export class Popup extends Component<Props, State> {
       if (!shallowEqual(this.state.popupPos, popupPos)) {
         this.setState({ popupPos });
       }
+
+      // Trigger focus on first focusable element
+      const focusableElements =
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+      const firstFocusableElement = this.refs.el.querySelectorAll(
+        focusableElements
+      )[0] as HTMLElement;
+
+      if (firstFocusableElement) {
+        firstFocusableElement.focus();
+      }
+    } else if (!show && prevProps.show !== show) {
+      // Return focus to opener
+      const opener = this.props.info.fromEl as HTMLElement;
+
+      opener.focus();
     }
   }
 
@@ -74,7 +130,6 @@ export class Popup extends Component<Props, State> {
         class="${cls('popup')} ${className}"
         style=${popupStyle}
         ref=${(el: HTMLElement) => (this.refs.el = el)}
-        aria-role="dialog"
       >
         <div class="${cls('popup-body')}">
           ${render && render({ eventEmitter, show, hidePopup, execCommand, initialValues })}
