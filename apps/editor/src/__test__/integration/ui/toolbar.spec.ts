@@ -93,7 +93,7 @@ describe('Default toolbar', () => {
   it('should show tooltip when mouseover on toolbar button', () => {
     fireMouseoverEvent(screen.getByLabelText('Headings'));
 
-    const tooltip = screen.getByText('Headings').parentElement;
+    const tooltip = screen.getAllByText('Headings')[1].parentElement;
 
     expect(tooltip).toHaveStyle({ display: 'block' });
     expect(tooltip).toHaveClass(cls('tooltip'));
