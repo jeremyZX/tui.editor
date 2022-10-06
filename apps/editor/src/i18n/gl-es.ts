@@ -55,4 +55,5 @@ Editor.setLanguage(['gl', 'gl-ES'], {
   'Auto scroll disabled': 'Desprazamento automático deshabilitado',
   'Choose language': 'Elixir idioma',
   'Text Formatting': 'Formato do texto',
+  'Active Button': 'Activo',
 });

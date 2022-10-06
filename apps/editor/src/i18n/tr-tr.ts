@@ -54,4 +54,5 @@ Editor.setLanguage(['tr', 'tr-TR'], {
   'Auto scroll disabled': 'Otomatik kaydırma kapalı',
   'Choose language': 'Dil seçiniz',
   'Text Formatting': 'Metin biçimlendirme',
+  'Active Button': 'Aktif Düğme',
 });

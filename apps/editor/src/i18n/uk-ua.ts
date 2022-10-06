@@ -54,4 +54,5 @@ Editor.setLanguage(['uk', 'uk-UA'], {
   'Auto scroll disabled': 'Автоматична прокрутка відключена',
   'Choose language': 'Вибрати мову',
   'Text Formatting': 'Форматування тексту',
+  'Active Button': 'Активна кнопка',
 });

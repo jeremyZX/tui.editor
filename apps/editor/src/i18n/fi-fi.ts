@@ -54,4 +54,5 @@ Editor.setLanguage(['fi', 'fi-FI'], {
   'Auto scroll disabled': 'Automaattinen skrollaus pois käytöstä',
   'Choose language': 'Valitse kieli',
   'Text Formatting': 'Tekstin muotoilu',
+  'Active Button': 'Aktiivinen',
 });

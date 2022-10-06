@@ -54,4 +54,5 @@ Editor.setLanguage(['fr', 'fr-FR'], {
   'Auto scroll disabled': 'Défilement automatique désactivé',
   'Choose language': 'Choix de la langue',
   'Text Formatting': 'Formatage du texte',
+  'Active Button': 'Actif',
 });

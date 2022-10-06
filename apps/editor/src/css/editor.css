@@ -919,3 +919,7 @@
     flex-wrap: wrap;
   }
 }
+
+#toastui-editor-active-button-desc {
+  display: none;
+}

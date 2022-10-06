@@ -54,4 +54,5 @@ Editor.setLanguage('zh-TW', {
   'Auto scroll disabled': '已停用自動滾動',
   'Choose language': '選擇語言',
   'Text Formatting': '文本格式',
+  'Active Button': '活動按鈕',
 });

@@ -80,6 +80,7 @@ export class ToolbarButtonComp extends Component<Props> {
     const { hideTooltip, disabled, item, active } = this.props;
     const style = { display: item.hidden ? 'none' : null, ...item.style };
     const classNames = `${item.className || ''}${active ? ' active' : ''}`;
+    const describedby = `${active ? cls('active-button-desc') : ''}`;
 
     return html`
       <button
@@ -93,6 +94,7 @@ export class ToolbarButtonComp extends Component<Props> {
         onFocus=${this.showTooltip}
         disabled=${!!disabled}
         aria-label=${item.text || item.tooltip || ''}
+        aria-describedby=${describedby}
       >
         ${item.text || ''}
         <span class="${cls('toolbar-button-name')}">${item.tooltip || ''}</span>

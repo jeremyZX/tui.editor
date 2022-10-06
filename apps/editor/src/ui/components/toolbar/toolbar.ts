@@ -35,6 +35,7 @@ import { Tabs } from '../tabs';
 import { ToolbarGroup } from './toolbarGroup';
 import { DropdownToolbarButton } from './dropdownToolbarButton';
 import i18n from '@/i18n/i18n';
+import css from 'tui-code-snippet/domUtil/css';
 
 type TabType = 'write' | 'preview';
 
@@ -250,6 +251,12 @@ export class Toolbar extends Component<Props, State> {
     allFocusables[nextFocusIndex].focus();
   }
 
+  private hideTooltip = () => {
+    if (this.tooltipRef.current) {
+      css(this.tooltipRef.current, { display: 'none' });
+    }
+  };
+
   private movePrevItemToDropdownToolbar(
     itemIndex: number,
     items: ToolbarGroupInfo[],
@@ -407,6 +414,7 @@ export class Toolbar extends Component<Props, State> {
           hidePopup=${this.hidePopup}
           execCommand=${this.execCommand}
         />
+        <div id=${cls('active-button-desc')}>${i18n.get('Active Button')}</div>
       </div>
     `;
   }
