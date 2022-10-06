@@ -40,19 +40,27 @@ export class Popup extends Component<Props, State> {
       return;
     }
 
-    // Close popup on Escape keypress
     if (ev.key === 'Escape') {
+      // Close popup on Escape keypress
       this.props.hidePopup();
+    } else if (ev.key === 'Tab') {
+      // Trap focus within popup
+      this.handleTabKey(ev);
+    } else if (ev.key === 'ArrowUp' || ev.key === 'ArrowDown') {
+      this.handleArrowKey(ev);
     }
+  };
 
-    // Trap focus within popup
-    if (ev.key !== 'Tab') {
+  private handleTabKey(ev: KeyboardEvent) {
+    const popup = this.refs.el;
+
+    if (popup.querySelector('[role="menu"]')) {
+      this.props.hidePopup();
       return;
     }
 
     const focusableElements =
       'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
-    const popup = this.refs.el;
 
     const firstFocusableElement = popup.querySelectorAll(focusableElements)[0] as HTMLElement;
     const focusableContent = popup.querySelectorAll(focusableElements) as NodeListOf<HTMLElement>;
@@ -69,7 +77,39 @@ export class Popup extends Component<Props, State> {
       firstFocusableElement.focus();
       ev.preventDefault();
     }
-  };
+  }
+
+  private handleArrowKey(ev: KeyboardEvent) {
+    const popup = this.refs.el;
+
+    if (!popup.querySelector('[role="menu"]')) {
+      return;
+    }
+
+    const focusableElements =
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+
+    const firstFocusableElement = popup.querySelectorAll(focusableElements)[0] as HTMLElement;
+    const focusableContent = Array.from(
+      popup.querySelectorAll(focusableElements) as NodeListOf<HTMLElement>
+    );
+    const lastFocusableElement = focusableContent[focusableContent.length - 1];
+
+    if (ev.key === 'ArrowUp' && document.activeElement === firstFocusableElement) {
+      lastFocusableElement.focus();
+    } else if (ev.key === 'ArrowDown' && document.activeElement === lastFocusableElement) {
+      firstFocusableElement.focus();
+      ev.preventDefault();
+    } else if (ev.key === 'ArrowUp') {
+      const currentFocusIndex = focusableContent.indexOf(document.activeElement as HTMLElement);
+
+      focusableContent[currentFocusIndex - 1].focus();
+    } else if (ev.key === 'ArrowDown') {
+      const currentFocusIndex = focusableContent.indexOf(document.activeElement as HTMLElement);
+
+      focusableContent[currentFocusIndex + 1].focus();
+    }
+  }
 
   mounted() {
     document.addEventListener('mousedown', this.handleMousedown);

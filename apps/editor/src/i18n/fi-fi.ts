@@ -53,4 +53,5 @@ Editor.setLanguage(['fi', 'fi-FI'], {
   'Auto scroll enabled': 'Automaattinen skrollaus käytössä',
   'Auto scroll disabled': 'Automaattinen skrollaus pois käytöstä',
   'Choose language': 'Valitse kieli',
+  'Text Formatting': 'Tekstin muotoilu',
 });

@@ -53,4 +53,5 @@ Editor.setLanguage(['it', 'it-IT'], {
   'Auto scroll enabled': 'Scrolling automatico abilitato',
   'Auto scroll disabled': 'Scrolling automatico disabilitato',
   'Choose language': 'Scegli la lingua',
+  'Text Formatting': 'Formattazione del testo',
 });

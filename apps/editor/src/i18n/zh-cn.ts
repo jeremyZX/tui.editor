@@ -53,4 +53,5 @@ Editor.setLanguage('zh-CN', {
   'Auto scroll enabled': '自动滚动已启用',
   'Auto scroll disabled': '自动滚动已禁用',
   'Choose language': '选择语言',
+  'Text Formatting': '文本格式',
 });

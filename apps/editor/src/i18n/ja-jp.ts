@@ -53,4 +53,5 @@ Editor.setLanguage(['ja', 'ja-JP'], {
   'Auto scroll enabled': '自動スクロールが有効',
   'Auto scroll disabled': '自動スクロールを無効に',
   'Choose language': '言語選択',
+  'Text Formatting': 'テキストの書式設定',
 });

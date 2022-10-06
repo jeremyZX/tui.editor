@@ -53,4 +53,5 @@ Editor.setLanguage(['pl', 'pl-PL'], {
   'Auto scroll enabled': 'Włączono automatyczne przewijanie',
   'Auto scroll disabled': 'Wyłączono automatyczne przewijanie',
   'Choose language': 'Wybierz język',
+  'Text Formatting': 'Formatowanie tekstu',
 });

@@ -53,4 +53,5 @@ Editor.setLanguage(['ko', 'ko-KR'], {
   'Auto scroll enabled': '자동 스크롤 켜짐',
   'Auto scroll disabled': '자동 스크롤 꺼짐',
   'Choose language': '언어 선택',
+  'Text Formatting': '텍스트 서식',
 });

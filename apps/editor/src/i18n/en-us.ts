@@ -53,4 +53,5 @@ Editor.setLanguage(['en', 'en-US'], {
   'Auto scroll enabled': 'Auto scroll enabled',
   'Auto scroll disabled': 'Auto scroll disabled',
   'Choose language': 'Choose language',
+  'Text Formatting': 'Text formatting',
 });

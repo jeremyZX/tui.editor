@@ -53,4 +53,5 @@ Editor.setLanguage(['sv', 'sv-SE'], {
   'Auto scroll enabled': 'Automatisk scroll aktiverad',
   'Auto scroll disabled': 'Automatisk scroll inaktiverad',
   'Choose language': 'Välj språk',
+  'Text Formatting': 'Textformatering',
 });

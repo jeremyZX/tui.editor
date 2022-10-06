@@ -276,3 +276,7 @@ export function removeProseMirrorHackNodes(html: string) {
 
   return resultHTML;
 }
+
+export function isVisible(element: HTMLElement) {
+  return element.offsetWidth > 0 || element.offsetHeight > 0;
+}

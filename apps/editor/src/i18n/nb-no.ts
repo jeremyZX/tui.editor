@@ -53,4 +53,5 @@ Editor.setLanguage(['nb', 'nb-NO'], {
   'Auto scroll enabled': 'Auto-scroll aktivert',
   'Auto scroll disabled': 'Auto-scroll deaktivert',
   'Choose language': 'Velg språl',
+  'Text Formatting': 'Tekstformatering',
 });

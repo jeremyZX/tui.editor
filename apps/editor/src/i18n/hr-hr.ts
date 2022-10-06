@@ -53,4 +53,5 @@ Editor.setLanguage(['hr', 'hr-HR'], {
   'Auto scroll enabled': 'Omogući auto klizanje',
   'Auto scroll disabled': 'Onemogući auto klizanje',
   'Choose language': 'Odabir jezika',
+  'Text Formatting': 'Oblikovanje teksta',
 });

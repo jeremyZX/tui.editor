@@ -20,6 +20,7 @@ import {
   getTotalOffset,
   cls,
   removeNode,
+  isVisible,
 } from '@/utils/dom';
 import { last } from '@/utils/common';
 import {
@@ -33,6 +34,7 @@ import { Popup } from '../popup';
 import { Tabs } from '../tabs';
 import { ToolbarGroup } from './toolbarGroup';
 import { DropdownToolbarButton } from './dropdownToolbarButton';
+import i18n from '@/i18n/i18n';
 
 type TabType = 'write' | 'preview';
 
@@ -198,6 +200,56 @@ export class Toolbar extends Component<Props, State> {
     this.hidePopup();
   };
 
+  private handleKeyDown = (ev: KeyboardEvent) => {
+    const { key, shiftKey } = ev;
+
+    // accessibility: aria role=toolbar uses arrow keys to focus on next/previous menu items, and tab
+    // to jump in and out of the toolbar.
+    if (document.activeElement && this.refs.el.contains(document.activeElement)) {
+      if (key === 'ArrowLeft' || key === 'ArrowRight') {
+        this.handleArrowKey(key);
+      } else if (key === 'Tab') {
+        this.handleTabKey(shiftKey);
+        ev.preventDefault();
+      }
+    }
+  };
+
+  private handleArrowKey(key: string) {
+    const buttonToolbarFocusables: HTMLElement[] = Array.from(
+      this.refs.el.querySelectorAll('button:not([disabled]),input')
+    );
+    const focusIndex = buttonToolbarFocusables.indexOf(document.activeElement as HTMLButtonElement);
+
+    if (key === 'ArrowLeft' && focusIndex > 0) {
+      buttonToolbarFocusables[focusIndex - 1].focus();
+    } else if (key === 'ArrowRight' && focusIndex < buttonToolbarFocusables.length - 1) {
+      buttonToolbarFocusables[focusIndex + 1].focus();
+    }
+  }
+
+  private handleTabKey(shiftKey: boolean) {
+    const focusableCss =
+      'button, [href], input, select, textarea:not(.toastui-editor-pseudo-clipboard), [tabindex]:not([tabindex="-1"]), [contenteditable]';
+
+    const allFocusables: HTMLElement[] = Array.from(document.querySelectorAll(focusableCss));
+    const currentFocusIndex = allFocusables.indexOf(document.activeElement as HTMLElement);
+    const buttonToolbarFocusables: HTMLElement[] = Array.from(
+      this.refs.el.querySelectorAll(focusableCss)
+    );
+
+    let nextFocusIndex = shiftKey ? currentFocusIndex - 1 : currentFocusIndex + 1;
+
+    while (
+      buttonToolbarFocusables.indexOf(allFocusables[nextFocusIndex]) >= 0 ||
+      !isVisible(allFocusables[nextFocusIndex])
+    ) {
+      nextFocusIndex = shiftKey ? nextFocusIndex - 1 : nextFocusIndex + 1;
+    }
+
+    allFocusables[nextFocusIndex].focus();
+  }
+
   private movePrevItemToDropdownToolbar(
     itemIndex: number,
     items: ToolbarGroupInfo[],
@@ -277,6 +329,7 @@ export class Toolbar extends Component<Props, State> {
     this.setState(this.classifyToolbarItems());
     this.appendTooltipToRoot();
     this.resizeObserver.observe(this.refs.el);
+    document.addEventListener('keydown', this.handleKeyDown);
   }
 
   updated(prevProps: Props) {
@@ -301,6 +354,7 @@ export class Toolbar extends Component<Props, State> {
     window.removeEventListener('resize', this.handleResize);
     this.resizeObserver.disconnect();
     removeNode(this.tooltipRef.current!);
+    document.removeEventListener('keydown', this.handleKeyDown);
   }
 
   render() {
@@ -316,7 +370,7 @@ export class Toolbar extends Component<Props, State> {
     const toolbarStyle = previewStyle === 'tab' ? { borderTopLeftRadius: 0 } : null;
 
     return html`
-      <div class="${cls('toolbar')}">
+      <div class="${cls('toolbar')}" role="toolbar" aria-label="${i18n.get('Text Formatting')}">
         <div
           class="${cls('md-tab-container')}"
           style="display: ${editorType === 'wysiwyg' || previewStyle === 'vertical'

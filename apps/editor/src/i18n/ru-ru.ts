@@ -54,4 +54,5 @@ Editor.setLanguage(['ru', 'ru-RU'], {
   'Auto scroll enabled': 'Автопрокрутка включена',
   'Auto scroll disabled': 'Автопрокрутка отключена',
   'Choose language': 'Выбрать язык',
+  'Text Formatting': 'Форматирование текста',
 });

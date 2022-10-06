@@ -53,4 +53,5 @@ Editor.setLanguage(['nl', 'nl-NL'], {
   'Auto scroll enabled': 'Autoscroll ingeschakeld',
   'Auto scroll disabled': 'Autoscroll uitgeschakeld',
   'Choose language': 'Kies een taal',
+  'Text Formatting': 'Tekstopmaak',
 });

@@ -53,4 +53,5 @@ Editor.setLanguage(['cs', 'cs-CZ'], {
   'Auto scroll enabled': 'Automatické rolování zapnuto',
   'Auto scroll disabled': 'Automatické rolování vypnuto',
   'Choose language': 'Vybrat jazyk',
+  'Text Formatting': 'Formátování textu',
 });

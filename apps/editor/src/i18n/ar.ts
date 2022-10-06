@@ -53,4 +53,5 @@ Editor.setLanguage('ar', {
   'Auto scroll enabled': 'التحريك التلقائي ممكّن',
   'Auto scroll disabled': 'التحريك التلقائي معطّل',
   'Choose language': 'اختر اللغة',
+  'Text Formatting': 'تنسيق النص',
 });

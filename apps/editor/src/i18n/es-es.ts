@@ -53,4 +53,5 @@ Editor.setLanguage(['es', 'es-ES'], {
   'Auto scroll enabled': 'Desplazamiento automático habilitado',
   'Auto scroll disabled': 'Desplazamiento automático deshabilitado',
   'Choose language': 'Elegir idioma',
+  'Text Formatting': 'Formato de texto',
 });
