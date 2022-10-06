@@ -130,20 +130,20 @@ table.ProseMirror-selectednode {
 }
 
 .toastui-editor-contents del {
-  color: #999;
+  color: #767676;
 }
 
 .toastui-editor-contents blockquote {
   margin: 14px 0;
   border-left: 4px solid #e5e5e5;
   padding: 0 16px;
-  color: #999;
+  color: #767676;
 }
 
 .toastui-editor-contents blockquote p,
 .toastui-editor-contents blockquote ul,
 .toastui-editor-contents blockquote ol {
-  color: #999;
+  color: #767676;
 }
 
 .toastui-editor-contents blockquote > :first-child {
@@ -169,7 +169,7 @@ table.ProseMirror-selectednode {
 }
 
 .toastui-editor-contents code {
-  color: #c1798b;
+  color: hsl(345, 37%, 50%);
   background-color: #f9f2f4;
   padding: 2px 3px;
   letter-spacing: -0.3px;
@@ -264,7 +264,7 @@ table.ProseMirror-selectednode {
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background-color: #ccc;
+  background-color: #767676;
 }
 
 .toastui-editor-contents ol > li::before {
@@ -273,7 +273,7 @@ table.ProseMirror-selectednode {
   width: 24px;
   text-align: right;
   direction: rtl;
-  color: #aaa;
+  color: #767676;
 }
 
 .toastui-editor-contents ul ul,
@@ -295,17 +295,17 @@ table.ProseMirror-selectednode {
 }
 
 .toastui-editor-contents hr {
-  border-top: 1px solid #eee;
+  border-top: 1px solid #767676;
   margin: 16px 0;
 }
 
 .toastui-editor-contents a {
   text-decoration: underline;
-  color: #4b96e6;
+  color: hsl(211,76%,45%);
 }
 
 .toastui-editor-contents a:hover {
-  color: #1f70de;
+  color: hsl(215,75%,45%);
 }
 
 .toastui-editor-contents .image-link {
