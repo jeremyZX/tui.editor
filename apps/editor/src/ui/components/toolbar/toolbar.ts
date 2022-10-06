@@ -206,7 +206,10 @@ export class Toolbar extends Component<Props, State> {
 
     // accessibility: aria role=toolbar uses arrow keys to focus on next/previous menu items, and tab
     // to jump in and out of the toolbar.
-    if (document.activeElement && this.refs.el.contains(document.activeElement)) {
+    if (key === 'Escape') {
+      // Handle escape at the toolbar level instead of at the button level to avoid wiring N event listeners
+      this.hideTooltip();
+    } else if (document.activeElement && this.refs.el.contains(document.activeElement)) {
       if (key === 'ArrowLeft' || key === 'ArrowRight') {
         this.handleArrowKey(key);
       } else if (key === 'Tab') {
@@ -377,7 +380,12 @@ export class Toolbar extends Component<Props, State> {
     const toolbarStyle = previewStyle === 'tab' ? { borderTopLeftRadius: 0 } : null;
 
     return html`
-      <div class="${cls('toolbar')}" role="toolbar" aria-label="${i18n.get('Text Formatting')}">
+      <div
+        class="${cls('toolbar')}"
+        role="toolbar"
+        aria-label="${i18n.get('Text Formatting')}"
+        onMouseleave=${this.hideTooltip}
+      >
         <div
           class="${cls('md-tab-container')}"
           style="display: ${editorType === 'wysiwyg' || previewStyle === 'vertical'

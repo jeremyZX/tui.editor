@@ -90,8 +90,8 @@ export class ToolbarButtonComp extends Component<Props> {
         class=${classNames}
         onClick=${this.execCommand}
         onMouseover=${this.showTooltip}
-        onMouseout=${hideTooltip}
         onFocus=${this.showTooltip}
+        onBlur=${hideTooltip}
         disabled=${!!disabled}
         aria-label=${item.text || item.tooltip || ''}
         aria-describedby=${describedby}
