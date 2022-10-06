@@ -901,11 +901,15 @@
 
 @media only screen and (max-width: 480px) {
   .toastui-editor-popup {
-    max-width: 300px;
-    margin-left: -150px;
+    max-width: auto;
+    width: 100%;
+    left: 0 !important;
+    margin-left: 0;
   }
 
   .toastui-editor-dropdown-toolbar {
+    height: auto;
     max-width: none;
+    flex-wrap: wrap;
   }
 }
