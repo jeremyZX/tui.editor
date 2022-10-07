@@ -380,12 +380,7 @@ export class Toolbar extends Component<Props, State> {
     const toolbarStyle = previewStyle === 'tab' ? { borderTopLeftRadius: 0 } : null;
 
     return html`
-      <div
-        class="${cls('toolbar')}"
-        role="toolbar"
-        aria-label="${i18n.get('Text Formatting')}"
-        onMouseleave=${this.hideTooltip}
-      >
+      <div class="${cls('toolbar')}" onMouseleave=${this.hideTooltip}>
         <div
           class="${cls('md-tab-container')}"
           style="display: ${editorType === 'wysiwyg' || previewStyle === 'vertical'
@@ -398,6 +393,8 @@ export class Toolbar extends Component<Props, State> {
           class="${cls('defaultUI-toolbar')}"
           ref=${(el: HTMLElement) => (this.refs.el = el)}
           style=${toolbarStyle}
+          role="toolbar"
+          aria-label="${i18n.get('Text Formatting')}"
         >
           ${items.map(
             (group, index) => html`
