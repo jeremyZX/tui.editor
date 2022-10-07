@@ -148,11 +148,19 @@ export class Popup extends Component<Props, State> {
       if (firstFocusableElement) {
         firstFocusableElement.focus();
       }
+
+      if (info.fromEl.getAttribute('aria-haspopup')) {
+        info.fromEl.setAttribute('aria-expanded', 'true');
+      }
     } else if (!show && prevProps.show !== show) {
       // Return focus to opener
       const opener = this.props.info.fromEl as HTMLElement;
 
       opener.focus();
+
+      if (info.fromEl.getAttribute('aria-haspopup')) {
+        info.fromEl.setAttribute('aria-expanded', 'false');
+      }
     }
   }
 

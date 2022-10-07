@@ -28,6 +28,7 @@ export interface ToolbarCustomOptions {
 
 export type ToolbarButtonInfo = {
   hidden?: boolean;
+  ariaHasPopup?: boolean;
 } & ToolbarButtonOptions;
 
 export interface Component<T = {}, R = {}> {

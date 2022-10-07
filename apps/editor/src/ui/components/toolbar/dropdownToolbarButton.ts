@@ -111,6 +111,8 @@ class DropdownToolbarButtonComp extends Component<Props, State> {
           onBlur=${hideTooltip}
           disabled=${disabled}
           aria-label=${item.tooltip}
+          aria-haspopup=${item.ariaHasPopup}
+          aria-expanded=${item.ariaHasPopup && showDropdown}
         >
           <span class="${cls('toolbar-button-name')}">${item.tooltip || ''}</span>
         </button>

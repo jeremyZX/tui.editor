@@ -95,6 +95,7 @@ export class ToolbarButtonComp extends Component<Props> {
         disabled=${!!disabled}
         aria-label=${item.text || item.tooltip || ''}
         aria-describedby=${describedby}
+        aria-haspopup=${item.ariaHasPopup}
       >
         ${item.text || ''}
         <span class="${cls('toolbar-button-name')}">${item.tooltip || ''}</span>

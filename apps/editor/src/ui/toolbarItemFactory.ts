@@ -75,6 +75,7 @@ function createDefaultToolbarItemInfo(type: string) {
         className: 'heading',
         tooltip: i18n.get('Headings'),
         state: 'heading',
+        ariaHasPopup: true,
       };
       break;
     case 'bold':
@@ -216,6 +217,7 @@ function createDefaultToolbarItemInfo(type: string) {
         name: 'more',
         className: 'more',
         tooltip: i18n.get('More'),
+        ariaHasPopup: true,
       };
       break;
 
