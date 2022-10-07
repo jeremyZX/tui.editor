@@ -10,7 +10,18 @@ interface Props {
   execCommand: ExecCommand;
 }
 
-export class HeadingPopupBody extends Component<Props> {
+interface State {
+  id: string;
+}
+
+export class HeadingPopupBody extends Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      id: `${cls('menu-headings')}-${Math.random().toString(16).substring(2, 15)}`,
+    };
+  }
+
   execCommand(level: number | null) {
     this.props.execCommand('heading', {
       level,
@@ -18,8 +29,15 @@ export class HeadingPopupBody extends Component<Props> {
   }
 
   render() {
+    const { id } = this.state;
+
     return html`
-      <ul role="menu" aria-label="${i18n.get('Headings')}" class="${cls('menu-headings')}">
+      <ul
+        role="menu"
+        aria-label="${i18n.get('Headings')}"
+        class="${cls('menu-headings')}"
+        id="${id}"
+      >
         ${[1, 2, 3, 4, 5, 6].map(
           (level) => html`
             <li data-type="Heading" role="none">

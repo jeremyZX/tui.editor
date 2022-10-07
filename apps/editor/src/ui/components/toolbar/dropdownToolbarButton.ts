@@ -29,6 +29,7 @@ interface Props {
 interface State {
   dropdownPos: { right: number; top: number } | null;
   showDropdown: boolean;
+  id: string;
 }
 
 const POPUP_INDENT = 4;
@@ -36,7 +37,11 @@ const POPUP_INDENT = 4;
 class DropdownToolbarButtonComp extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
-    this.state = { showDropdown: false, dropdownPos: null };
+    this.state = {
+      showDropdown: false,
+      dropdownPos: null,
+      id: `${cls('dropdown-toolbar')}-${Math.random().toString(16).substring(2, 15)}`,
+    };
   }
 
   private getBound() {
@@ -93,7 +98,7 @@ class DropdownToolbarButtonComp extends Component<Props, State> {
   };
 
   render() {
-    const { showDropdown, dropdownPos } = this.state;
+    const { showDropdown, dropdownPos, id } = this.state;
     const { disabled, item, items, hideTooltip } = this.props;
     const visibleItems = items.filter((dropdownItem) => !dropdownItem.hidden);
     const groupStyle = visibleItems.length ? null : { display: 'none' };
@@ -113,10 +118,12 @@ class DropdownToolbarButtonComp extends Component<Props, State> {
           aria-label=${item.tooltip}
           aria-haspopup=${item.ariaHasPopup}
           aria-expanded=${item.ariaHasPopup && showDropdown}
+          aria-controls="${id}"
         >
           <span class="${cls('toolbar-button-name')}">${item.tooltip || ''}</span>
         </button>
         <div
+          id="${id}"
           class="${cls('dropdown-toolbar')}"
           style=${{ ...dropdownStyle, ...dropdownPos }}
           ref=${(el: HTMLElement) => (this.refs.dropdownEl = el)}

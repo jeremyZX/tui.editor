@@ -151,6 +151,11 @@ export class Popup extends Component<Props, State> {
 
       if (info.fromEl.getAttribute('aria-haspopup')) {
         info.fromEl.setAttribute('aria-expanded', 'true');
+        const menu = this.refs.el.querySelector('[role="menu"]');
+
+        if (menu && menu.id) {
+          info.fromEl.setAttribute('aria-controls', menu.id);
+        }
       }
     } else if (!show && prevProps.show !== show) {
       // Return focus to opener
@@ -160,6 +165,7 @@ export class Popup extends Component<Props, State> {
 
       if (info.fromEl.getAttribute('aria-haspopup')) {
         info.fromEl.setAttribute('aria-expanded', 'false');
+        info.fromEl.removeAttribute('aria-controls');
       }
     }
   }
