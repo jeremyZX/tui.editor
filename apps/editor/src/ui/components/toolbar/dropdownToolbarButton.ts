@@ -97,7 +97,8 @@ class DropdownToolbarButtonComp extends Component<Props, State> {
           class=${item.className}
           onClick=${() => this.setState({ showDropdown: true })}
           onMouseover=${this.showTooltip}
-          onMouseout=${hideTooltip}
+          onFocus=${this.showTooltip}
+          onBlur=${hideTooltip}
           disabled=${disabled}
           aria-label=${item.tooltip}
         >
