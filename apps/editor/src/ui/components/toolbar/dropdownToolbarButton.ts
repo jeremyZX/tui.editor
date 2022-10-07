@@ -56,8 +56,15 @@ class DropdownToolbarButtonComp extends Component<Props, State> {
     }
   };
 
+  private handleKeyDown = ({ key }: KeyboardEvent) => {
+    if (key === 'Escape' && this.state.showDropdown) {
+      this.setState({ showDropdown: false, dropdownPos: null });
+    }
+  };
+
   mounted() {
     document.addEventListener('click', this.handleClickDocument);
+    document.addEventListener('keydown', this.handleKeyDown);
   }
 
   updated() {
@@ -68,6 +75,7 @@ class DropdownToolbarButtonComp extends Component<Props, State> {
 
   beforeDestroy() {
     document.removeEventListener('click', this.handleClickDocument);
+    document.removeEventListener('keydown', this.handleKeyDown);
   }
 
   private showTooltip = () => {
