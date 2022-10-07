@@ -47,18 +47,28 @@ class DropdownToolbarButtonComp extends Component<Props, State> {
     return { ...rect, left: null, right: 10 };
   }
 
+  private hideDropdown() {
+    const { showDropdown } = this.state;
+
+    this.setState({ showDropdown: false, dropdownPos: null });
+
+    if (showDropdown) {
+      this.refs.el.focus();
+    }
+  }
+
   private handleClickDocument = ({ target }: MouseEvent) => {
     if (
       !closest(target as HTMLElement, `.${cls('dropdown-toolbar')}`) &&
       !closest(target as HTMLElement, '.more')
     ) {
-      this.setState({ showDropdown: false, dropdownPos: null });
+      this.hideDropdown();
     }
   };
 
   private handleKeyDown = ({ key }: KeyboardEvent) => {
     if (key === 'Escape' && this.state.showDropdown) {
-      this.setState({ showDropdown: false, dropdownPos: null });
+      this.hideDropdown();
     }
   };
 
