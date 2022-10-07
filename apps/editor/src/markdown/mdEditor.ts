@@ -220,6 +220,7 @@ export default class MdEditor extends EditorBase {
 
     editorView.dom.setAttribute('role', 'textbox');
     editorView.dom.setAttribute('aria-multiline', 'true');
+    editorView.dom.setAttribute('aria-label', 'Markdown Editor');
 
     return editorView;
   }
