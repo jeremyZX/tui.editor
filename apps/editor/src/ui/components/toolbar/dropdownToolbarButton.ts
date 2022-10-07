@@ -92,7 +92,9 @@ class DropdownToolbarButtonComp extends Component<Props, State> {
           onMouseout=${hideTooltip}
           disabled=${disabled}
           aria-label=${item.tooltip}
-        ></button>
+        >
+          <span class="${cls('toolbar-button-name')}">${item.tooltip || ''}</span>
+        </button>
         <div
           class="${cls('dropdown-toolbar')}"
           style=${{ ...dropdownStyle, ...dropdownPos }}
