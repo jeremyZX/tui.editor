@@ -1,7 +1,7 @@
 import throttle from 'tui-code-snippet/tricks/throttle';
 import forEachArray from 'tui-code-snippet/collection/forEachArray';
 import ResizeObserver from 'resize-observer-polyfill';
-import { EditorType, PreviewStyle } from '@t/editor';
+import { EditorType, PreviewStyle, ToolbarStyle } from '@t/editor';
 import { Emitter } from '@t/event';
 import {
   IndexList,
@@ -44,6 +44,7 @@ interface Props {
   previewStyle: PreviewStyle;
   toolbarItems: ToolbarItem[];
   editorType: EditorType;
+  toolbarStyle: ToolbarStyle;
 }
 
 interface State {
@@ -328,6 +329,11 @@ export class Toolbar extends Component<Props, State> {
         totalWidth += dividerWidth;
       }
     });
+
+    if (this.props.toolbarStyle === 'wrap') {
+      return { items: this.initialItems, dropdownItems: [] };
+    }
+
     return { items, dropdownItems };
   }
 
@@ -338,7 +344,11 @@ export class Toolbar extends Component<Props, State> {
     // classify toolbar and dropdown toolbar after DOM has been rendered
     this.setState(this.classifyToolbarItems());
     this.appendTooltipToRoot();
-    this.resizeObserver.observe(this.refs.el);
+
+    if (this.props.toolbarStyle === 'default') {
+      this.resizeObserver.observe(this.refs.el);
+    }
+
     document.addEventListener('keydown', this.handleKeyDown);
   }
 
@@ -367,6 +377,14 @@ export class Toolbar extends Component<Props, State> {
     document.removeEventListener('keydown', this.handleKeyDown);
   }
 
+  get cssClass() {
+    if (this.props.toolbarStyle === 'wrap') {
+      return `${cls('toolbar')} wrap`;
+    }
+
+    return cls('toolbar');
+  }
+
   render() {
     const { previewStyle, eventEmitter, editorType } = this.props;
     const { popupInfo, showPopup, activeTab, items, dropdownItems } = this.state;
@@ -380,7 +398,7 @@ export class Toolbar extends Component<Props, State> {
     const toolbarStyle = previewStyle === 'tab' ? { borderTopLeftRadius: 0 } : null;
 
     return html`
-      <div class="${cls('toolbar')}" onMouseleave=${this.hideTooltip}>
+      <div class="${this.cssClass}" onMouseleave=${this.hideTooltip}>
         <div
           class="${cls('md-tab-container')}"
           style="display: ${editorType === 'wysiwyg' || previewStyle === 'vertical'

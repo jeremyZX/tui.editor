@@ -159,6 +159,7 @@ const editor = new Editor({
 - `initialValue`: 콘텐츠 초기값. 반드시 마크다운 문자열 형태여야 한다.
 - `previewStyle`: 마크다운 프리뷰 스타일. `tab` | `vertical`
 - `usageStatistics`: 에디터를 사용하는 웹 사이트의 _호스트명_을 전송한다. 어떠한 사용자가 에디터를 사용하고 있는지 수집하기 위합니다. 이 옵션은 불리언 값을 지정하여 비활성화할 수 있다. `true` | `false`
+- `toolbarStyle`: 도구 모음의 동작을 사용자 정의할 수 있으므로 액세스 가능한 기술에 의존하는 사용자의 의미 체계를 개선할 수 있습니다. `default` | `wrap`
 
 더 많은 옵션은 [여기](https://nhn.github.io/tui.editor/latest/ToastUIEditor)서 볼 수 있다.
 

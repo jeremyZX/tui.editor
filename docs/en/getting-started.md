@@ -159,6 +159,7 @@ The basic options available are:
 - `initialValue`: Initial value. Set Markdown string
 - `previewStyle`: Preview style of Markdown mode `tab` | `vertical`
 - `usageStatistics`: Let us know the _hostname_. We want to learn from you how you are using the editor. You are free to disable it. `true` | `false`
+- `toolbarStyle`: Allows customizing the behavior of the toolbar, which may improve semantics for users who rely on accessible technology. `default` | `wrap`
 
 Find out more options [here](https://nhn.github.io/tui.editor/latest/ToastUIEditor).
 

@@ -1,4 +1,4 @@
-import { EditorType, PreviewStyle } from '@t/editor';
+import { EditorType, PreviewStyle, ToolbarStyle } from '@t/editor';
 import { Emitter } from '@t/event';
 import { IndexList, ToolbarItem, ToolbarItemOptions } from '@t/ui';
 import { cls } from '@/utils/dom';
@@ -18,6 +18,7 @@ interface Props {
   };
   previewStyle: PreviewStyle;
   editorType: EditorType;
+  toolbarStyle: ToolbarStyle;
   toolbarItems: ToolbarItem[];
   theme: string;
 }
@@ -60,7 +61,7 @@ export class Layout extends Component<Props, State> {
   }
 
   render() {
-    const { eventEmitter, hideModeSwitch, toolbarItems, theme } = this.props;
+    const { eventEmitter, hideModeSwitch, toolbarItems, theme, toolbarStyle } = this.props;
     const { hide, previewStyle, editorType } = this.state;
     const displayClassName = hide ? ' hidden' : '';
     const editorTypeClassName = cls(editorType === 'markdown' ? 'md-mode' : 'ww-mode');
@@ -78,6 +79,7 @@ export class Layout extends Component<Props, State> {
           previewStyle=${previewStyle}
           toolbarItems=${toolbarItems}
           editorType=${editorType}
+          toolbarStyle=${toolbarStyle}
         />
         <div
           class="${cls('main')} ${editorTypeClassName}"

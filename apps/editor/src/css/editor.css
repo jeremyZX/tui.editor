@@ -302,6 +302,24 @@
   box-sizing: border-box;
 }
 
+.toastui-editor-toolbar.wrap {
+  height: unset;
+}
+
+.toastui-editor-toolbar.wrap .toastui-editor-toolbar.wrap {
+  height: unset;
+}
+
+.toastui-editor-toolbar.wrap .toastui-editor-defaultUI-toolbar {
+  height: unset;
+  flex-wrap: wrap;
+}
+
+.toastui-editor-toolbar.wrap .toastui-editor-toolbar-group {
+  flex-wrap: wrap;
+}
+
+
 .toastui-editor-toolbar-divider {
   display: inline-block;
   width: 1px;

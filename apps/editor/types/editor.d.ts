@@ -27,6 +27,7 @@ export interface WidgetRule {
   rule: RegExp;
   toDOM: (text: string) => HTMLElement;
 }
+export type ToolbarStyle = 'default' | 'wrap';
 
 export type WidgetRuleMap = Record<string, WidgetRule>;
 
@@ -187,6 +188,12 @@ export interface EditorOptions {
   theme?: string;
   autofocus?: boolean;
   viewer?: boolean;
+
+  /**
+   * Allows wrapping the toolbar and disables the "More" "..." button in smaller
+   * resolutions. This may be desirable to improve accessibility.
+   */
+  toolbarStyle?: ToolbarStyle;
 }
 
 interface Slots {
