@@ -45,6 +45,7 @@ export class LinkPopupBody extends Component<Props> {
     removeClass(linkTextEl, 'wrong');
 
     if (linkUrlEl.value.length < 1) {
+      linkUrlEl.reportValidity();
       addClass(linkUrlEl, 'wrong');
       return;
     }
@@ -52,6 +53,7 @@ export class LinkPopupBody extends Component<Props> {
     const checkLinkText = isUndefined(this.props.initialValues.linkUrl);
 
     if (checkLinkText && linkTextEl.value.length < 1) {
+      linkTextEl.reportValidity();
       addClass(linkTextEl, 'wrong');
       return;
     }
@@ -80,12 +82,14 @@ export class LinkPopupBody extends Component<Props> {
           id="toastuiLinkUrlInput"
           type="text"
           ref=${(el: HTMLInputElement) => (this.refs.url = el)}
+          required
         />
         <label for="toastuiLinkTextInput">${i18n.get('Link text')}</label>
         <input
           id="toastuiLinkTextInput"
           type="text"
           ref=${(el: HTMLInputElement) => (this.refs.text = el)}
+          required
         />
         <div class="${cls('button-container')}">
           <button type="button" class="${cls('close-button')}" onClick=${this.props.hidePopup}>

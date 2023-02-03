@@ -209,6 +209,33 @@ describe('Default toolbar', () => {
 
       expect(linkText).toHaveClass('wrong');
     });
+
+    it('should expose fields as required to accessibility tree', () => {
+      const urlText = getByText(linkPopup, 'URL').nextElementSibling as HTMLInputElement;
+      const linkText = getByText(linkPopup, 'Link text').nextElementSibling as HTMLInputElement;
+
+      expect(urlText.required).toBe(true);
+      expect(linkText.required).toBe(true);
+    });
+
+    it('should call reportValidity on elements when url or text are not filled out', () => {
+      const urlText = getByText(linkPopup, 'URL').nextElementSibling as HTMLInputElement;
+      const linkText = getByText(linkPopup, 'Link text').nextElementSibling as HTMLInputElement;
+      const OkBtn = getByText(linkPopup, 'OK');
+
+      const urlTextReportValiditySpy = jest.spyOn(urlText, 'reportValidity');
+      const linkTextReportValiditySpy = jest.spyOn(linkText, 'reportValidity');
+
+      OkBtn.click();
+
+      expect(urlTextReportValiditySpy).toHaveBeenCalled();
+      expect(linkTextReportValiditySpy).not.toHaveBeenCalled();
+
+      urlText.value = 'https://ui.toast.com';
+      OkBtn.click();
+
+      expect(linkTextReportValiditySpy).toHaveBeenCalled();
+    });
   });
 
   describe('image button', () => {
