@@ -55,4 +55,6 @@ Editor.setLanguage(['ko', 'ko-KR'], {
   'Choose language': '언어 선택',
   'Text Formatting': '텍스트 서식',
   'Active Button': '활성 버튼',
+  'Link text required': "양식 입력란 '링크 텍스트'는 필수입니다",
+  'URL required': "양식 입력란 'URL'은(는) 필수입니다",
 });

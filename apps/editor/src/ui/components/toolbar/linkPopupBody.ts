@@ -37,14 +37,31 @@ export class LinkPopupBody extends Component<Props> {
     linkTextEl.value = linkText || '';
   }
 
+  private resetCustomValidity = (evt: Event) => {
+    const sender = evt.target as HTMLInputElement;
+
+    // having setCustomValidity set causes multiple validity reports of
+    // the current validation message in Chrome/Edge during subsequent
+    // text input. I don't see any evidence that setCustomValidity
+    // puts the input element into an invalid state, nor do I see any
+    // evidence that validity should be reported on each keypress if
+    // custom validity is set, so this might be a browser bug.
+
+    sender.setCustomValidity('');
+  };
+
   private execCommand = () => {
     const linkUrlEl = this.refs.url as HTMLInputElement;
     const linkTextEl = this.refs.text as HTMLInputElement;
+
+    linkUrlEl.setCustomValidity('');
+    linkTextEl.setCustomValidity('');
 
     removeClass(linkUrlEl, 'wrong');
     removeClass(linkTextEl, 'wrong');
 
     if (linkUrlEl.value.length < 1) {
+      linkUrlEl.setCustomValidity(i18n.get('URL required'));
       linkUrlEl.reportValidity();
       addClass(linkUrlEl, 'wrong');
       return;
@@ -53,6 +70,7 @@ export class LinkPopupBody extends Component<Props> {
     const checkLinkText = isUndefined(this.props.initialValues.linkUrl);
 
     if (checkLinkText && linkTextEl.value.length < 1) {
+      linkTextEl.setCustomValidity(i18n.get('Link text required'));
       linkTextEl.reportValidity();
       addClass(linkTextEl, 'wrong');
       return;
@@ -82,6 +100,7 @@ export class LinkPopupBody extends Component<Props> {
           id="toastuiLinkUrlInput"
           type="text"
           ref=${(el: HTMLInputElement) => (this.refs.url = el)}
+          onKeyDown=${this.resetCustomValidity}
           required
         />
         <label for="toastuiLinkTextInput">${i18n.get('Link text')}</label>
@@ -89,6 +108,7 @@ export class LinkPopupBody extends Component<Props> {
           id="toastuiLinkTextInput"
           type="text"
           ref=${(el: HTMLInputElement) => (this.refs.text = el)}
+          onKeyDown=${this.resetCustomValidity}
           required
         />
         <div class="${cls('button-container')}">

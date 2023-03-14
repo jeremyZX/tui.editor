@@ -56,4 +56,6 @@ Editor.setLanguage(['ru', 'ru-RU'], {
   'Choose language': 'Выбрать язык',
   'Text Formatting': 'Форматирование текста',
   'Active Button': 'Активная кнопка',
+  'Link text required': 'Поле формы "Текст ссылки" является обязательным',
+  'URL required': 'Поле формы "URL" является обязательным',
 });

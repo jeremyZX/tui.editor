@@ -55,4 +55,6 @@ Editor.setLanguage('zh-CN', {
   'Choose language': '选择语言',
   'Text Formatting': '文本格式',
   'Active Button': '活动按钮',
+  'Link text required': '表单输入"链接文本"是必需的',
+  'URL required': '表单输入"URL"是必需的',
 });

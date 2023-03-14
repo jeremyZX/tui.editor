@@ -55,4 +55,6 @@ Editor.setLanguage(['tr', 'tr-TR'], {
   'Choose language': 'Dil seçiniz',
   'Text Formatting': 'Metin biçimlendirme',
   'Active Button': 'Aktif Düğme',
+  'Link text required': 'Form girdisi "Bağlantı yazısı" zorunludur',
+  'URL required': 'Form girdisi "URL" zorunludur',
 });

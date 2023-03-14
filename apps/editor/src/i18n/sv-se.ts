@@ -55,4 +55,6 @@ Editor.setLanguage(['sv', 'sv-SE'], {
   'Choose language': 'Välj språk',
   'Text Formatting': 'Textformatering',
   'Active Button': 'Aktiv',
+  'Link text required': 'Formulärfältet "Länktext" är obligatoriskt',
+  'URL required': 'Formulärfältet "URL" är obligatoriskt',
 });

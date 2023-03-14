@@ -55,4 +55,6 @@ Editor.setLanguage(['cs', 'cs-CZ'], {
   'Choose language': 'Vybrat jazyk',
   'Text Formatting': 'Formátování textu',
   'Active Button': 'Aktivní',
+  'Link text required': 'Pole "Text odkazu" je povinné',
+  'URL required': 'Pole "URL" je povinné',
 });

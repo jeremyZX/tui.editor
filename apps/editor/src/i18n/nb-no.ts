@@ -55,4 +55,6 @@ Editor.setLanguage(['nb', 'nb-NO'], {
   'Choose language': 'Velg språl',
   'Text Formatting': 'Tekstformatering',
   'Active Button': 'Aktiv',
+  'Link text required': 'Skjemafeltet "Lenketekst" er påkrevd',
+  'URL required': 'Skjemafeltet "URL" er påkrevd',
 });

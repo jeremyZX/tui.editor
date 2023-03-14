@@ -55,4 +55,6 @@ Editor.setLanguage('zh-TW', {
   'Choose language': '選擇語言',
   'Text Formatting': '文本格式',
   'Active Button': '活動按鈕',
+  'Link text required': '表單輸入欄位「超連結文字」為必填',
+  'URL required': '表單輸入欄位「URL」為必填',
 });

@@ -55,4 +55,6 @@ Editor.setLanguage(['pl', 'pl-PL'], {
   'Choose language': 'Wybierz język',
   'Text Formatting': 'Formatowanie tekstu',
   'Active Button': 'Aktywny',
+  'Link text required': 'Pole formularza "Tekst odnośnika" jest wymagane',
+  'URL required': 'Pole formularza "URL" jest wymagane',
 });

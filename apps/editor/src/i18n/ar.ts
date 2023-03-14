@@ -55,4 +55,6 @@ Editor.setLanguage('ar', {
   'Choose language': 'اختر اللغة',
   'Text Formatting': 'تنسيق النص',
   'Active Button': 'نشيط',
+  'Link text required': 'حقل نص الرابط مطلوب في النموذج',
+  'URL required': 'يجب تعبئة حقل العنوان الإلكتروني (URL) في النموذج',
 });

@@ -56,4 +56,6 @@ Editor.setLanguage(['gl', 'gl-ES'], {
   'Choose language': 'Elixir idioma',
   'Text Formatting': 'Formato do texto',
   'Active Button': 'Activo',
+  'Link text required': 'O campo do formulario "Texto do enlace" é obrigatorio',
+  'URL required': 'O campo do formulario "URL" é obrigatorio',
 });

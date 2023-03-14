@@ -55,4 +55,6 @@ Editor.setLanguage(['uk', 'uk-UA'], {
   'Choose language': 'Вибрати мову',
   'Text Formatting': 'Форматування тексту',
   'Active Button': 'Активна кнопка',
+  'Link text required': 'Поле форми "Текст посилання" є обов\'язковим',
+  'URL required': 'Поле форми "URL" є обов\'язковим',
 });

@@ -55,4 +55,6 @@ Editor.setLanguage(['nl', 'nl-NL'], {
   'Choose language': 'Kies een taal',
   'Text Formatting': 'Tekstopmaak',
   'Active Button': 'Actieve',
+  'Link text required': 'Het formulier veld "Link tekst" is verplicht',
+  'URL required': 'Het formulier veld "URL" is verplicht',
 });

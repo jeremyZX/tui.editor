@@ -55,4 +55,6 @@ Editor.setLanguage(['fi', 'fi-FI'], {
   'Choose language': 'Valitse kieli',
   'Text Formatting': 'Tekstin muotoilu',
   'Active Button': 'Aktiivinen',
+  'Link text required': 'Kenttä "Linkkiteksti" on pakollinen',
+  'URL required': 'Kenttä "URL" on pakollinen',
 });

@@ -55,4 +55,6 @@ Editor.setLanguage(['hr', 'hr-HR'], {
   'Choose language': 'Odabir jezika',
   'Text Formatting': 'Oblikovanje teksta',
   'Active Button': 'Aktív',
+  'Link text required': 'Polje za unos "Tekst linka" je obvezno',
+  'URL required': 'Polje za unos "URL" je obvezno',
 });

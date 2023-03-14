@@ -55,4 +55,6 @@ Editor.setLanguage(['ja', 'ja-JP'], {
   'Choose language': '言語選択',
   'Text Formatting': 'テキストの書式設定',
   'Active Button': 'アクティブ',
+  'Link text required': 'フォーム入力欄「リンクテキスト」は必須です',
+  'URL required': 'フォーム入力欄「URL」は必須です',
 });
